@@ -1,4 +1,5 @@
 # Deploy de projetos
 
-* Walleties
-* VueX/LocalStorage Test
+- Walleties
+- VueX/LocalStorage Test
+- Lontrinha
