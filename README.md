@@ -3,3 +3,4 @@
 - Walleties
 - VueX/LocalStorage Test
 - Lontrinha
+- Rockye App
