@@ -53,6 +53,7 @@ function init() {
   document.onmousemove = onDocumentMouseMove;
   document.ondblclick = onDocumentDoubleClick;
   document.onclick = onDocumentClick;
+  document.ontouchend = onDocumentClick;
 
   document.addEventListener('touchstart', onDocumentTouchStart, false);
   document.addEventListener('touchmove', onDocumentTouchMove, false);
@@ -130,8 +131,8 @@ function onDocumentDoubleClick() {
 
 function onDocumentClick(event) {
   if (createMode) {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
+    mouse.x = event.clientX || event.changedTouches[0].clientX;
+    mouse.y = event.clientY || event.changedTouches[0].clientY;
 
     var randomNumber = 3 + Math.floor(Math.random() * 3);
     alreadyUsed = [];
