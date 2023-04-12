@@ -52,6 +52,7 @@ function init() {
   document.onmouseup = onDocumentMouseUp;
   document.onmousemove = onDocumentMouseMove;
   document.ondblclick = onDocumentDoubleClick;
+  document.onclick = onDocumentClick;
 
   document.addEventListener('touchstart', onDocumentTouchStart, false);
   document.addEventListener('touchmove', onDocumentTouchMove, false);
@@ -125,6 +126,19 @@ function onDocumentMouseMove(event) {
 
 function onDocumentDoubleClick() {
   reset();
+}
+
+function onDocumentClick(event) {
+  if (createMode) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+
+    var randomNumber = 3 + Math.floor(Math.random() * 3);
+    alreadyUsed = [];
+    for (i = 0; i < randomNumber; i++) {
+      createBall(mouse.x, mouse.y);
+    }
+  }
 }
 
 function onDocumentTouchStart(event) {
@@ -288,8 +302,8 @@ function createBox(world, x, y, width, height, fixed) {
 function mouseDrag() {
   // mouse press
   if (createMode) {
-    alreadyUsed = [];
-    createBall(mouse.x, mouse.y);
+    // alreadyUsed = [];
+    // createBall(mouse.x, mouse.y);
   } else if (isMouseDown && !mouseJoint) {
     var body = getBodyAtMouse();
 
